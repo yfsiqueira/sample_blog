@@ -35,8 +35,13 @@ class AppController extends Controller {
     public $components = array(
         'Flash',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home'),
+            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'posts', 'action' => 'index'),
+            'authenticate' => array(
+                'Form' => array(
+                    'passwordHasher' => 'Blowfish'
+                )
+            ),
             'authorize' => array('Controller')
         )
     );
@@ -46,7 +51,7 @@ class AppController extends Controller {
     }
 
     public function isAuthorized($user) {
-        
+
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
         }

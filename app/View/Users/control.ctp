@@ -1,21 +1,21 @@
-<h1>Blog Posts</h1>
-<p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
+<h1>Blog Users</h1>
+<p><?php echo $this->Html->link('Adicionar Usuário', array('action' => 'add')); ?></p>
 <table>
     <tr>
         <th>Id</th>
-        <th>Título</th>
+        <th>Usuário</th>
         <th>Ações</th>
         <th>Data de Criação</th>
     </tr>
 
-    <?php foreach ($posts as $post): ?>
+    <?php foreach ($users as $user): ?>
     <tr>
-        <td><?php echo $post['Post']['id']; ?></td>
+        <td><?php echo $user['User']['id']; ?></td>
         <td>
             <?php
                 echo $this->Html->link(
-                    $post['Post']['title'],
-                    array('action' => 'view', $post['Post']['id'])
+                    $user['User']['username'],
+                    array('action' => 'view', $user['User']['id'])
                 );
             ?>
         </td>
@@ -23,18 +23,18 @@
             <?php
                 echo $this->Form->postLink(
                     'Delete',
-                    array('action' => 'delete', $post['Post']['id']),
+                    array('action' => 'delete', $user['User']['id']),
                     array('confirm' => 'Are you sure?')
                 );
             ?>
             <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'edit', $post['Post']['id'])
+                    'Edit', array('action' => 'edit', $user['User']['id'])
                 );
             ?>
         </td>
         <td>
-            <?php echo $post['Post']['created']; ?>
+            <?php echo $user['User']['created']; ?>
         </td>
     </tr>
     <?php endforeach; ?>
