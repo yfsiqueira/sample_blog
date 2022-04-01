@@ -26,12 +26,12 @@ class PostsController extends AppController {
 
     public function view($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post Inválido/Inexistente.'));
         }
 
         $post = $this->Post->findById($id);
         if (!$post) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post Inválido/Inexistente.'));
         }
         $this->set('post', $post);
     }
